@@ -9,10 +9,43 @@
 	// P2 Start
 	//now what?
 	//api:  http://www.ist.rit.edu/api/
-	$(document).ready(function(){
-		
+	$(document).ready(function()
+	{
+
 	});
 	
+	// AJAX function to get information
+	// XHR is XML HTTP Request
+	// t = get or post
+	// d = path :/about/
+
+	function myXHR(t,d)
+	{
+		return $.ajax({
+			type: t,
+			cache: false,
+			async: true,
+			dataType: 'json',
+			url: 'proxy.php',
+			data: d,
+			beforeSend:function()
+			{
+				//do this before sending the request
+				$('<img src="gears.gif" id="spinner" style="position:relative; top:50px; left:50px; z-index:2000"/>')
+				.appendTo("body");
+			}
+		}).always(function()
+		{
+			//happens at the end, no matter what
+			$('#spinner').remove();
+		}).fail(function()
+		{
+			// if our request fails to work
+			console.log("Failure with " +  d.path);
+		})
+	}
+
+
 
 </script>
 </head>
