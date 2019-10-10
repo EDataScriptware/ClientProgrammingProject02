@@ -11,8 +11,47 @@
 	//api:  http://www.ist.rit.edu/api/
 	$(document).ready(function()
 	{
+		// get the /about/ information onto the page
+		myXHR('get',{'path':'/about/'}).done(function(json)
+		{
+			var x = '<h2>'+json.title+'</h2>';
+			x+= '<p>' + json.description+'</p>';
+			x+= '<p>' + json.quote+'</p>';
+			x+= '<p>' + json.quoteAuthor+'</p>';
 
-	});
+			// add this X to the page
+			$('#about').html(x);
+		}); // end /about/
+
+
+
+		myXHR('get',{'path':'/degrees/undergraduate/'}).done(function(json)
+		{
+			console.log(json);
+
+			var x='';
+			$.each(json.undergraduate,function(i, item)
+			{
+				var x = '<h2>'+ json.title + '(' + item.degreeName + ')</h2>';
+				x+= '<p>' + item.description+'</p>';
+
+				var y = '<ul>';
+				$.each(item.concentrations,function(j, item)
+				{
+					y+='<li>'+item+'</li>';
+				});
+				y+='</ul>'; 
+
+				x+= y; // adding concentrations to the program information
+				$('#content').html(x);
+			}); // end json.undergraduate
+
+		}); // end degrees/undergraduate/
+
+
+
+
+	}); // end ready function
 	
 	// AJAX function to get information
 	// XHR is XML HTTP Request
@@ -33,16 +72,18 @@
 				//do this before sending the request
 				$('<img src="gears.gif" id="spinner" style="position:relative; top:50px; left:50px; z-index:2000"/>')
 				.appendTo("body");
-			}
+			} // end before send
 		}).always(function()
 		{
 			//happens at the end, no matter what
 			$('#spinner').remove();
-		}).fail(function()
+			
+		//end always
+		}).fail(function() 
 		{
 			// if our request fails to work
 			console.log("Failure with " +  d.path);
-		})
+		}) // end fail
 	}
 
 
