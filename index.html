@@ -24,8 +24,8 @@
 		}); // end /about/
 
 
-
-		myXHR('get',{'path':'/degrees/undergraduate/'}).done(function(json)
+		// The degreeName is acting up
+		myXHR('get',{'path':'/degrees/undergraduate/degreeName=cit'}).done(function(json)
 		{
 			console.log(json);
 
@@ -43,10 +43,56 @@
 				y+='</ul>'; 
 
 				x+= y; // adding concentrations to the program information
-				$('#contentUndergraduate').html(x);
-			}); // end json.undergraduate
+				$('#contentUndergraduateCIT').html(x);
+			}); // end json.undergraduate CIT
 
-		}); // end degrees/undergraduate/
+		}); // end degrees/undergraduate/CIT
+
+		myXHR('get',{'path':'/degrees/undergraduate/degreeName=hcc'}).done(function(json)
+		{
+			console.log(json);
+
+			var x='';
+			$.each(json.undergraduate,function(i, item)
+			{
+				var x = '<h2>'+ item.title + '(' + item.degreeName + ')</h2>';
+				x+= '<p>' + item.description+'</p>';
+
+				var y = '<ul>';
+				$.each(item.concentrations,function(j, item)
+				{
+					y+='<li>'+item+'</li>';
+				});
+				y+='</ul>'; 
+
+				x+= y; // adding concentrations to the program information
+				$('#contentUndergraduateHCC').html(x);
+			}); // end json.undergraduate HCC
+
+		}); // end degrees/undergraduate/HCC
+
+		myXHR('get',{'path':'/degrees/undergraduate/degreeName=wmc'}).done(function(json)
+		{
+			console.log(json);
+
+			var x='';
+			$.each(json.undergraduate,function(i, item)
+			{
+				var x = '<h2>'+ item.title + '(' + item.degreeName + ')</h2>';
+				x+= '<p>' + item.description+'</p>';
+
+				var y = '<ul>';
+				$.each(item.concentrations,function(j, item)
+				{
+					y+='<li>'+item+'</li>';
+				});
+				y+='</ul>'; 
+
+				x+= y; // adding concentrations to the program information
+				$('#contentUndergraduateWMC').html(x);
+			}); // end json.undergraduate WMC
+
+		}); // end degrees/undergraduate/WMC
 
 
 		myXHR('get',{'path':'/degrees/graduate/'}).done(function(json)
@@ -117,7 +163,9 @@
   <h2>IST Dept Site</h2>
 	<section id="people"></section>
   
-	<section id="contentUndergraduate" style="height:300px"></section>
+	<section id="contentUndergraduateCIT" style="height:300px"></section>
+	<section id="contentUndergraduateHCC" style="height:300px"></section>
+	<section id="contentUndergraduateWMC" style="height:300px"></section>
 
 	<section id="contentGraduate" style="height:300px"></section>
 	
