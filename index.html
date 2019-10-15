@@ -43,11 +43,34 @@
 				y+='</ul>'; 
 
 				x+= y; // adding concentrations to the program information
-				$('#content').html(x);
+				$('#contentUndergraduate').html(x);
 			}); // end json.undergraduate
 
 		}); // end degrees/undergraduate/
 
+
+		myXHR('get',{'path':'/degrees/graduate/'}).done(function(json)
+		{
+			console.log(json);
+
+			var x='';
+			$.each(json.graduate,function(i, item)
+			{
+				var x = '<h2>'+ item.title + '(' + item.degreeName + ')</h2>';
+				x+= '<p>' + item.description+'</p>';
+
+				var y = '<ul>';
+				$.each(item.concentrations,function(j, item)
+				{
+					y+='<li>'+item+'</li>';
+				});
+				y+='</ul>'; 
+
+				x+= y; // adding concentrations to the program information
+				$('#contentGraduate').html(x);
+			}); // end json.graduate
+
+		}); // end degrees/graduate/
 
 
 
@@ -94,7 +117,9 @@
   <h2>IST Dept Site</h2>
 	<section id="people"></section>
   
-	<section id="content" style="height:300px"></section>
+	<section id="contentUndergraduate" style="height:300px"></section>
+
+	<section id="contentGraduate" style="height:300px"></section>
 	
 	<section id="about" style="height:200px"></section>
 
