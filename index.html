@@ -61,13 +61,12 @@
 				console.log(k + ' -- ' + ktem)
 
 
-				x += '<div onclick="facMore(this)"';
+				x += '<div class="faculty" onclick="facMore(this)"';
 				x += ' data-id="' + $(this)[0].username + '"';
 				x += 'style ="cursor:pointer;">';
 				x += '<h2>' + $(this)[0].name + '</h2>';
 				x += '<p>' + $(this)[0].title + '</p>';
 				x += '<img src = "' + $(this)[0].imagePath + '"/>';
-				x += '<hr/>';
 
 				x += "</div>";
 			})

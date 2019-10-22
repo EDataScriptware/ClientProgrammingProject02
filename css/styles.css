@@ -10,3 +10,18 @@ h1
     border: solid 2px black;
     background-color: black;
 }
+
+.faculty
+{
+    color: red;
+    border: solid 2px black;
+    float: left;
+    padding: 2.5%;
+    
+}
+img 
+{
+    height: 100px;
+    float: none;
+    margin-left: 25%;
+}
