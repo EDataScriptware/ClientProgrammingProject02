@@ -15,11 +15,22 @@ h1
 {
     color: red;
     border: solid 2px black;
+    position: relative;
     float: left;
     padding: 2.5%;
     margin-left: 1%;
     margin-bottom: 1%;
+    display: block;
     
+}
+#people
+{
+    display: block;
+}
+
+#content
+{
+
 }
 img 
 {
