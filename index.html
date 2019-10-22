@@ -3,160 +3,117 @@
 <head>
   <meta charset="utf-8" />
   <title>340 p2 ex</title>
-	<script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
-	<script src="jquery-3.4.1.js" type="text/javascript"> </script>
-
+<script src="https://code.jquery.com/jquery-latest.js" type="text/javascript">
+</script>
 <script type="text/javascript">
 	// P2 Start
 	//now what?
 	//api:  http://www.ist.rit.edu/api/
-	$(document).ready(function()
-	{
+	$(document).ready(function(){
+		
 		// get the /about/ information onto the page
-		myXHR('get',{'path':'/about/'}).done(function(json)
-		{
+		myXHR('get',{'path':'/about/'}).done(function(json){
 			var x = '<h2>'+json.title+'</h2>';
-			x+= '<p>' + json.description+'</p>';
-			x+= '<p>' + json.quote+'</p>';
-			x+= '<p>' + json.quoteAuthor+'</p>';
-
-			// add this X to the page
+			x+='<p>'+json.description+'</p>';
+			x+='<p>'+json.quote+'</p>';
+			x+='<p>'+json.quoteAuthor+'</p>';
+		
+			// add this 'x' to the page
 			$('#about').html(x);
 		}); // end /about/
-
-
-		// The degreeName is acting up
-		myXHR('get',{'path':'/degrees/undergraduate/degreeName=cit'}).done(function(json)
-		{
+		
+		// degrees undergraudate
+		
+		myXHR('get',{'path':'/degrees/undergraduate/'}).done(function(json){
 			console.log(json);
-
+			
 			var x='';
-			$.each(json.undergraduate,function(i, item)
-			{
-				var x = '<h2>'+ item.title + '(' + item.degreeName + ')</h2>';
-				x+= '<p>' + item.description+'</p>';
-
-				var y = '<ul>';
-				$.each(item.concentrations,function(j, item)
-				{
-					y+='<li>'+item+'</li>';
+			
+			$.each(json.undergraduate,function(i,item){
+				console.log(i+' = '+item);
+				
+				x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
+				x+='<p>'+item.description+'</p>';
+				
+				var y='<ul>';
+				$.each(item.concentrations,function(j,jtem){
+					y+='<li>'+jtem+'</li>';
 				});
-				y+='</ul>'; 
+				y+='</ul>';
+				
+				x+=y;		// add the concentrations to the program information				
+				
+				$('#content').html(x);
+			});
+			
+		
+		
+		}); // end degrees/undergraduate/
 
-				x+= y; // adding concentrations to the program information
-				$('#contentUndergraduateCIT').html(x);
-			}); // end json.undergraduate CIT
+		// ------------------------------------------------------------
 
-		}); // end degrees/undergraduate/CIT
-
-		myXHR('get',{'path':'/degrees/undergraduate/degreeName=hcc'}).done(function(json)
-		{
-			console.log(json);
-
-			var x='';
-			$.each(json.undergraduate,function(i, item)
-			{
-				var x = '<h2>'+ item.title + '(' + item.degreeName + ')</h2>';
-				x+= '<p>' + item.description+'</p>';
-
-				var y = '<ul>';
-				$.each(item.concentrations,function(j, item)
-				{
-					y+='<li>'+item+'</li>';
-				});
-				y+='</ul>'; 
-
-				x+= y; // adding concentrations to the program information
-				$('#contentUndergraduateHCC').html(x);
-			}); // end json.undergraduate HCC
-
-		}); // end degrees/undergraduate/HCC
-
-		myXHR('get',{'path':'/degrees/undergraduate/degreeName=wmc'}).done(function(json)
-		{
-			console.log(json);
-
-			var x='';
-			$.each(json.undergraduate,function(i, item)
-			{
-				var x = '<h2>'+ item.title + '(' + item.degreeName + ')</h2>';
-				x+= '<p>' + item.description+'</p>';
-
-				var y = '<ul>';
-				$.each(item.concentrations,function(j, item)
-				{
-					y+='<li>'+item+'</li>';
-				});
-				y+='</ul>'; 
-
-				x+= y; // adding concentrations to the program information
-				$('#contentUndergraduateWMC').html(x);
-			}); // end json.undergraduate WMC
-
-		}); // end degrees/undergraduate/WMC
+		// PEOPLE
+		myXHR('get',{'path':'/people/faculty'}).done(function(json){
+			var x = '';
+			$.each(json.faculty, function(k, ktem){
+				console.log(k + ' -- ' + ktem)
 
 
-		myXHR('get',{'path':'/degrees/graduate/'}).done(function(json)
-		{
-			console.log(json);
+				x += '<div onclick="facMore(this)"';
+				x += ' data-id="' + $(this)[0].username + '"';
+				x += 'style ="cursor:pointer;">';
+				x += '<h2>' + $(this)[0].name + '</h2>';
+				x += '<p>' + $(this)[0].title + '</p>';
+				x += '<img src = "' + $(this)[0].imagePath + '"/>';
+				x += '<hr/>';
 
-			var x='';
-			$.each(json.graduate,function(i, item)
-			{
-				var x = '<h2>'+ item.title + '(' + item.degreeName + ')</h2>';
-				x+= '<p>' + item.description+'</p>';
+				x += "</div>";
+			})
+			$('#people').html(x);
 
-				var y = '<ul>';
-				$.each(item.concentrations,function(j, item)
-				{
-					y+='<li>'+item+'</li>';
-				});
-				y+='</ul>'; 
+		}); // end people/faculty
 
-				x+= y; // adding concentrations to the program information
-				$('#contentGraduate').html(x);
-			}); // end json.graduate
-
-		}); // end degrees/graduate/
-
-
-
-	}); // end ready function
+		
+		
+	});	// end document ready
 	
-	// AJAX function to get information
+	function facMore ( who ){
+		var id = $(who).attr('data-id');
+myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
+
+	console.log('facMore = ' + json.interestArea);	
+	}) // end path
+
+
+} // end facMore
+	
+	// AJAX function to get information 
 	// XHR is XML HTTP Request
 	// t = get or post
-	// d = path :/about/
-
-	function myXHR(t,d)
-	{
+	// d = path : /about/
+	function myXHR(t,d){
 		return $.ajax({
 			type: t,
 			cache: false,
 			async: true,
-			dataType: 'json',
-			url: 'proxy.php',
-			data: d,
-			beforeSend:function()
-			{
-				//do this before sending the request
-				$('<img src="gears.gif" id="spinner" style="position:relative; top:50px; left:50px; z-index:2000"/>')
-				.appendTo("body");
-			} // end before send
-		}).always(function()
-		{
-			//happens at the end, no matter what
+			dataType:'json',
+			url:'proxy.php',
+			data:d,
+			beforeSend:function(){
+				// do this before sending the request
+				$('<img src="gears.gif" id="spinner" '+
+					'style="position:relative;top:50px;left:50px;z-index:2000"/>')
+					.appendTo("body");
+			}
+		}).always(function(){
+			// happens at the end, no matter what
 			$('#spinner').remove();
-			
-		//end always
-		}).fail(function() 
-		{
-			// if our request fails to work
-			console.log("Failure with " +  d.path);
-		}) // end fail
-	}
-
-
+		}).fail(function(){
+			// if our request doesn't work
+			console.log('Failure with '+d.path);
+		});
+	} // end myXHR
+	
 
 </script>
 </head>
@@ -164,13 +121,9 @@
   <h2>IST Dept Site</h2>
 	<section id="people"></section>
   
-	<section id="contentUndergraduateCIT" style="height:300px"></section>
-	<section id="contentUndergraduateHCC" style="height:300px"></section>
-	<section id="contentUndergraduateWMC" style="height:300px"></section>
-
-	<section id="contentGraduate" style="height:300px"></section>
+	<section id="content"></section>
 	
-	<section id="about" style="height:200px"></section>
+	<section id="about"></section>
 
 </body>
 </html>
