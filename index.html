@@ -13,6 +13,28 @@
 	//api:  http://www.ist.rit.edu/api/
 	$(document).ready(function(){
 		
+		
+		// PEOPLE
+		myXHR('get',{'path':'/people/faculty'}).done(function(json){
+			var x = '';
+			x+= '<h1>IST Department Site</h1>'
+			$.each(json.faculty, function(k, ktem){
+				console.log(k + ' -- ' + ktem)
+
+
+				x += '<div class="faculty" onclick="facMore(this)"';
+				x += ' data-id="' + $(this)[0].username + '"';
+				x += 'style ="cursor:pointer;">';
+				x += '<h2>' + $(this)[0].name + '</h2>';
+				x += '<p>' + $(this)[0].title + '</p>';
+				x += '<img src = "' + $(this)[0].imagePath + '"/>';
+
+				x += "</div>";
+			})
+			$('#people').html(x);
+
+		}); // end people/faculty
+		
 		// get the /about/ information onto the page
 		myXHR('get',{'path':'/about/'}).done(function(json){
 			var x = '<h2>'+json.title+'</h2>';
@@ -24,6 +46,9 @@
 			$('#about').html(x);
 		}); // end /about/
 		
+
+
+
 		// degrees undergraudate
 		
 		myXHR('get',{'path':'/degrees/undergraduate/'}).done(function(json){
@@ -54,25 +79,7 @@
 
 		// ------------------------------------------------------------
 
-		// PEOPLE
-		myXHR('get',{'path':'/people/faculty'}).done(function(json){
-			var x = '';
-			$.each(json.faculty, function(k, ktem){
-				console.log(k + ' -- ' + ktem)
-
-
-				x += '<div class="faculty" onclick="facMore(this)"';
-				x += ' data-id="' + $(this)[0].username + '"';
-				x += 'style ="cursor:pointer;">';
-				x += '<h2>' + $(this)[0].name + '</h2>';
-				x += '<p>' + $(this)[0].title + '</p>';
-				x += '<img src = "' + $(this)[0].imagePath + '"/>';
-
-				x += "</div>";
-			})
-			$('#people').html(x);
-
-		}); // end people/faculty
+		
 
 		
 		
@@ -119,7 +126,6 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 </script>
 </head>
 <body>
-  <h1>IST Dept Site</h1>
 	<section id="people"></section>
   
 	<section id="content"></section>
