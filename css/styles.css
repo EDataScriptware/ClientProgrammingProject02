@@ -31,6 +31,7 @@
 #content
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     display: block;
     float: right;
     bottom: 0px;
@@ -43,6 +44,9 @@
     display: block;
     float: left;
     bottom: 0px;
+=======
+float: left;
+>>>>>>> parent of 89d17ff... adjusting line and forcing the text to the bottom
 =======
 float: left;
 >>>>>>> parent of 89d17ff... adjusting line and forcing the text to the bottom
