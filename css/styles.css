@@ -1,4 +1,4 @@
-h1
+#header
 {
     color: orangered;
     top: 0;
@@ -9,6 +9,7 @@ h1
     text-align: center;
     border: solid 2px black;
     background-color: black;
+    z-index: 100;
 }
 
 .faculty
@@ -26,11 +27,24 @@ h1
 #people
 {
     display: block;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: .75%;
 }
-
 #content
 {
+    display: block;
+    float: right;
+    bottom: 0px;
+    margin-left: -50px;
+    margin-top: 100px;
 
+}
+#about
+{
+    display: block;
+    float: left;
+    bottom: 0px;
 }
 img 
 {
