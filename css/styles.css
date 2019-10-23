@@ -27,11 +27,20 @@
 #people
 {
     display: block;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: .75%;
 }
 
 #content
 {
-float: left;
+    float: left;
+    bottom: 0;
+}
+#about
+{
+    float: left;
+    bottom: 0;
 }
 img 
 {
