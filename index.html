@@ -59,7 +59,7 @@
 		// degrees undergraudate
 		
 		myXHR('get',{'path':'/degrees/undergraduate/'}).done(function(json){
-			console.log(json);
+		//	console.log(json);
 			
 			var x='';
 			
@@ -148,7 +148,7 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 
 
 myXHR('get',{'path':'/research/'}).done(function(json){
-	console.log(json);
+	// console.log(json);
 	var x = '';
 	$.each(json.byFaculty,function(i,item)
 	{
@@ -185,9 +185,27 @@ myXHR('get',{'path':'/research/'}).done(function(json){
 	}); // end byInterestName
 
 
-}); //end /end research
+}); //end research
 
 
+myXHR('get',{'path':'/resources/'}).done(function(json){
+	console.log(json);
+	
+	var x = '';
+
+	 x += '<h2>'+json.title+'</h2>';
+	 x += '<h3>'+json.subTitle+'</h3>';
+
+
+	$.each(json,function(i,item)
+	{
+		//	x += '<h2>'+item.title+'</h2> title';
+				
+		
+
+		$('#resources').html(x);
+	}); // end resource
+}); //end /resource
 
 
 
@@ -253,6 +271,8 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 	<section id="employment"></section>
 
 	<section id="research"></section>
+
+	<section id="resources"></section>
 
 </body>
 </html>
