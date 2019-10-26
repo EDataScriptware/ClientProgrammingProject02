@@ -157,7 +157,6 @@ myXHR('get',{'path':'/research/'}).done(function(json){
 
 			var y='<ul>';
 
-				console.log(item.citations);
 				$.each(item.citations,function(j,jtem){
 					y+='<li>'+jtem+'</li>';
 				});
@@ -166,10 +165,30 @@ myXHR('get',{'path':'/research/'}).done(function(json){
 			x+=y
 
 		$('#research').html(x);
-	}); // end UgMinors
+	}); // end byFaculty
+
+	$.each(json.byInterestArea,function(i,item)
+	{
+			x += '<h2>'+item.areaName+'</h2>';
+
+			var y='<ul>';
+
+				$.each(item.citations,function(j,jtem){
+					y+='<li>'+jtem+'</li>';
+				});
+
+				y+='</ul>';
+
+			x+=y
+
+		$('#research').html(x);
+	}); // end byInterestName
 
 
 }); //end /end research
+
+
+
 
 
 		// ------------------------------------------------------------
