@@ -24,7 +24,7 @@
 			var x = '';
 			x+= ''
 			$.each(json.faculty, function(k, ktem){
-				console.log(k + ' -- ' + ktem)
+				//console.log(k + ' -- ' + ktem)
 
 
 				x += '<div class="faculty" onclick="facMore(this)"';
@@ -64,7 +64,7 @@
 			var x='';
 			
 			$.each(json.undergraduate,function(i,item){
-				console.log(i+' = '+item);
+				//console.log(i+' = '+item);
 				
 				x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
 				x+='<p>'+item.description+'</p>';
@@ -82,37 +82,65 @@
 			
 		
 		
-		}); // end degrees/undergraduate/
+		}); // end degrees/
 
-
-// degrees undergraudate
 		
+// get the /minors/ information onto the page
 myXHR('get',{'path':'/minors/'}).done(function(json){
-			console.log(json);
-			
-			var x='';
-			
-			$.each(json.undergraduate,function(i,item){
-				console.log(i+' = '+item);
-				
-				x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
-				x+='<p>'+item.description+'</p>';
-				
-				var y='<ul>';
-				$.each(item.concentrations,function(j,jtem){
-					y+='<li>'+jtem+'</li>';
-				});
-				y+='</ul>';
-				
-				x+=y;		// add the concentrations to the program information				
-				
-				$('#content').html(x);
-			});
-			
+	// console.log(json);
+	var x = '';
+	$.each(json.UgMinors,function(i,item)
+	{
+			x += '<h2>'+item.name+'</h2>';
+			x +='<h3>'+item.title+'</h3>';
+			x +='<p>'+item.description+'</p>';
+			x +='<p>'+item.courses+'</p>';		
 		
-		
-		}); // end degrees/undergraduate/
 
+		$('#minors').html(x);
+	}); // end UgMinors
+}); //end /minors
+
+
+// get the /employment/ information onto the page
+myXHR('get',{'path':'/employment/'}).done(function(json){
+	console.log(json);
+	var x = '';
+
+	var intro = json.introduction;
+	if (intro)
+	{
+		x += "<h2>" + intro.title + "</h2>";
+	}
+
+	$.each(intro.content),function(i, item)
+	{
+		console.log(intro.content)
+		x += "<p>" + item.title + "</p>";
+		x += "<p>" + item.description + "</p>";
+
+	}
+
+	$('#employment').html(x);
+
+
+	/*$.each(json.introduction,function(i,item)
+	{
+		console.log(item)
+		$.each(item.content,function(j,jtem){
+					x+='<li>'+jtem.title+'</li>';
+					x+='<li>'+jtem.description+'</li>';
+
+				});	
+			*/
+		
+		//x += '<h2>'+item.title+'</h2>';
+	//	x +='<p>'+item.content+'</p>';		
+
+	// UNCOMMENT THIS IF PLAN TO USE TOP
+	// }); // end careers
+
+}); //end /employment
 
 		// ------------------------------------------------------------
 
@@ -172,6 +200,8 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 	<section id="about"></section>
 
 	<section id="minors"></section>
+
+	<section id="employment"></section>
 
 </body>
 </html>
