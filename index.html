@@ -194,16 +194,18 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 	var x = '';
 
 	 x += '<h2>'+json.title+'</h2>';
-	 x += '<h3>'+json.subTitle+'</h3>';
+	 x += '<h3>'+json.subTitle+'</h3> subTitle';
 
 
-	$.each(json,function(i,item)
+	$.each(json.coopEnrollment,function(i,item)
 	{
-		//	x += '<h2>'+item.title+'</h2> title';
+			x += '<h4>'+item.title+'</h4>';
+			x += '<h5>'+item.RITJobZoneGuidelink+'</h5> RITJobZoneGuidelink';
 				
 		
 
-		$('#resources').html(x);
+	
+			$('#resources').html(x);
 	}); // end resource
 }); //end /resource
 
