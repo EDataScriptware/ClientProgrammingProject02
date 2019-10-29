@@ -194,19 +194,24 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 	var x = '';
 
 	 x += '<h2>'+json.title+'</h2>';
-	 x += '<h3>'+json.subTitle+'</h3> subTitle';
+	 x += '<h3>'+json.subTitle+'</h3>';
 
-
+	 x += '<h4><a href="'+ json.coopEnrollment.RITJobZoneGuidelink +'">'+json.coopEnrollment.title+'</a></h4>';
+				// <a href="url"> </a>
 	$.each(json.coopEnrollment,function(i,item)
 	{
-			x += '<h4>'+item.title+'</h4>';
-			x += '<h5>'+item.RITJobZoneGuidelink+'</h5> RITJobZoneGuidelink';
-				
+		x += '<h5>' + item.enrollmentInformationContent + '</h5>'
 		
+		$.each(json.coopEnrollment.enrollmentInformationContent,function(j,jtem)
+		{
+			x += '<h6>' + json.coopEnrollment.enrollmentInformationContent.title + '</h6>';
+			x += '<h6>' + json.coopEnrollment.enrollmentInformationContent.description + '</h6>';
+
+		});
 
 	
-			$('#resources').html(x);
 	}); // end resource
+	$('#resources').html(x);
 }); //end /resource
 
 
