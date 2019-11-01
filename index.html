@@ -188,31 +188,41 @@ myXHR('get',{'path':'/research/'}).done(function(json){
 }); //end research
 
 
+// resources
 myXHR('get',{'path':'/resources/'}).done(function(json){
-	console.log(json);
-	
-	var x = '';
+			
+			var x = '';
+			console.log("resource ->")
+			console.log(json);
+			x += '<h2>'+json.title+'</h2>';
+			x += '<h3>'+json.subTitle+'</h3>';
 
-	 x += '<h2>'+json.title+'</h2>';
-	 x += '<h3>'+json.subTitle+'</h3>';
+			console.log("coopEnrollment ->")
+			// <a href="url"> </a>
 
-	 x += '<h4><a href="'+ json.coopEnrollment.RITJobZoneGuidelink +'">'+json.coopEnrollment.title+'</a></h4>';
-				// <a href="url"> </a>
-	$.each(json.coopEnrollment,function(i,item)
-	{
-		x += '<h5>' + item.enrollmentInformationContent + '</h5>'
-		
-		$.each(json.coopEnrollment.enrollmentInformationContent,function(j,jtem)
-		{
-			x += '<h6>' + json.coopEnrollment.enrollmentInformationContent.title + '</h6>';
-			x += '<h6>' + json.coopEnrollment.enrollmentInformationContent.description + '</h6>';
+			//replace the parameters from (i, item) to item in the function
+			$.each(json.coopEnrollment,function(item)
+			{	
+				console.log( "item: " + item);
+				console.log( "link: " + json.coopEnrollment.RITJobZoneGuidelink );
+				// console.log("i: " + i);
 
-		});
+				x += '<h4><a href="'+ json.coopEnrollment.RITJobZoneGuidelink +'">' + json.coopEnrollment.title +'</a></h4>';
+				return false; // loop run once
+			}); // end resource
+			
+			// also, replace the parameters from (j, jtem) to (jtem) for array
+			// and place it outside of the first loop
+			console.log("coopEnroll detail: ->");
+			$.each(json.coopEnrollment.enrollmentInformationContent,function(j, jtem)
+			{
+				console.log(jtem);
+				x += '<h5>' + jtem.title + '</h5>';
+				x += '<h6>' + jtem.description + '</h6>';
 
-	
-	}); // end resource
-	$('#resources').html(x);
-}); //end /resource
+			});
+			$('#resources').html(x);
+		}); //end /resource
 
 
 
