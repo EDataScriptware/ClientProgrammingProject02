@@ -66,23 +66,82 @@
 			$.each(json.undergraduate,function(i,item){
 				//console.log(i+' = '+item);
 				
-				x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
-				x+='<p>'+item.description+'</p>';
+				if (item.title != null)
+				{
+					x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
+
+					x+='<p>'+item.description+'</p>';
 				
 				var y='<ul>';
-				$.each(item.concentrations,function(j,jtem){
-					y+='<li>'+jtem+'</li>';
-				});
+					$.each(item.concentrations,function(j,jtem){
+						y+='<li>'+jtem+'</li>';
+					});
 				y+='</ul>';
+
+				}
+				else 
+				{
+					x+='<h2> (' + item.degreeName + ')</h2>';
+				
+				var y='<ul>';
+					$.each(item.availableCertificates,function(j,jtem){
+						y+='<li>'+jtem+'</li>';
+					});
+				y+='</ul>';
+				}
+
+				
 				
 				x+=y;		// add the concentrations to the program information				
 				
-				$('#content').html(x);
+				$('#undergraduate').html(x);
 			});
 			
 		
 		
-		}); // end degrees/
+		}); // end undergraduate/
+
+// degrees undergraudate
+		
+myXHR('get',{'path':'/degrees/graduate/'}).done(function(json){
+		//	console.log(json);
+			
+			var x='';
+			
+			$.each(json.graduate,function(i,item){
+				//console.log(i+' = '+item);
+				
+				if (item.title != null)
+				{
+					x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
+
+					x+='<p>'+item.description+'</p>';
+				
+				var y='<ul>';
+					$.each(item.concentrations,function(j,jtem){
+						y+='<li>'+jtem+'</li>';
+					});
+				y+='</ul>';
+
+				}
+				else 
+				{
+					x+='<h2> (' + item.degreeName + ')</h2>';
+				
+				var y='<ul>';
+					$.each(item.availableCertificates,function(j,jtem){
+						y+='<li>'+jtem+'</li>';
+					});
+				y+='</ul>';
+				x+= y;
+				}
+
+				$('#graduate').html(x);
+			});
+			
+		
+		
+		}); // end undergraduate/
 
 		
 // get the /minors/ information onto the page
@@ -221,6 +280,9 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 				x += '<h6>' + jtem.description + '</h6>';
 
 			});
+
+
+
 			$('#resources').html(x);
 		}); //end /resource
 
@@ -279,8 +341,10 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 
 	<section id="people"></section>
   
-	<section id="content"></section>
-	
+	<section id="undergraduate"></section>
+
+	<section id="graduate"></section>
+
 	<section id="about"></section>
 
 	<section id="minors"></section>
