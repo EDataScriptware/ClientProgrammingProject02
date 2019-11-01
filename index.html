@@ -141,7 +141,7 @@ myXHR('get',{'path':'/degrees/graduate/'}).done(function(json){
 			
 		
 		
-		}); // end undergraduate/
+		}); // end graduate/
 
 		
 // get the /minors/ information onto the page
@@ -162,47 +162,89 @@ myXHR('get',{'path':'/minors/'}).done(function(json){
 
 
 // get the /employment/ information onto the page
-/*
 myXHR('get',{'path':'/employment/'}).done(function(json){
 	console.log(json);
 	var x = '';
+	x+= "<h2>" + json.introduction.title + "</h2>"
 
-	var intro = json.introduction;
-	if (intro)
+	$.each(json.introduction.content,function(i, item)
 	{
-		x += "<h2>" + intro.title + "</h2>";
-	}
+		// console.log(item);
 
-	$.each(intro.content),function(i, item)
+		x+= "<h2>" + item.title + "</h2>";
+		x+= "<p>" + item.description + "</p>";
+		
+	}); // end introduction
+
+	x += "<h2>" + json.degreeStatistics.title + "</h2>"
+
+	$.each(json.degreeStatistics.statistics,function(i, item)
 	{
-		console.log(intro.content)
-		x += "<p>" + item.title + "</p>";
-		x += "<p>" + item.description + "</p>";
+		console.log(item);
 
-	}
+		x+= "<h4>" + item.value + "</h4>";
+		x+= "<h5>" + item.description + "</h5>";
+	}); // end degreeStatistics
+
+	x += "<h2>" + json.employers.title + "</h2>"
+
+	$.each(json.employers.employerNames,function(i, item)
+	{
+		console.log(item);
+
+		x+= "<h4>" + item + "</h4>";
+	}); // end employerNames
+
+	x += "<h2>" + json.careers.title + "</h2>"
+
+	$.each(json.careers.careerNames,function(i, item)
+	{
+		console.log(item);
+
+		x+= "<h4>" + item + "</h4>";
+	}); // end employerNames
+
+	 x += "<table>"
+		x += "<caption>" + json.coopTable.title + "</caption>";
+		x+="<tr><th>employer</th><th>degree</th><th>city</th><th>term</th>"
+	 $.each(json.coopTable.coopInformation,function(i, item)
+	{
+		console.log(item);
+
+
+
+		x+= "<tr><th>" + item.employer + "</th>";
+		x+= "<th>" + item.degree + "</th>";
+		x+= "<th>" + item.city + "</th>";
+		x+= "<th>" + item.term + "</th></tr>";
+
+	}); // end employerNames
+	x += "</table>";
+
+	x += "<table>"
+	x += "<caption>" + json.employmentTable.title + "</caption>";
+	x += "<tr><th>employer</th><th>degree</th><th>city</th><th>title</th><th>startDate</th>"
+	$.each(json.employmentTable.professionalEmploymentInformation,function(i, item)
+	{
+		console.log(item);
+
+
+
+		x+= "<tr><th>" + item.employer + "</th>";
+		x+= "<th>" + item.degree + "</th>";
+		x+= "<th>" + item.city + "</th>";
+		x+= "<th>" + item.title + "</th>";
+		x+= "<th>" + item.startDate + "</th></tr>";
+
+	}); // end employerNames
+	x += "</table>";
 
 	$('#employment').html(x);
 
 
-	/*$.each(json.introduction,function(i,item)
-	{
-		console.log(item)
-		$.each(item.content,function(j,jtem){
-					x+='<li>'+jtem.title+'</li>';
-					x+='<li>'+jtem.description+'</li>';
-
-				});	
-			
-		
-		//x += '<h2>'+item.title+'</h2>';
-	//	x +='<p>'+item.content+'</p>';		
-
-	// UNCOMMENT THIS IF PLAN TO USE TOP
-	// }); // end careers
-
 }); //end /employment
 
-*/
+
 
 
 
@@ -251,19 +293,19 @@ myXHR('get',{'path':'/research/'}).done(function(json){
 myXHR('get',{'path':'/resources/'}).done(function(json){
 			
 			var x = '';
-			console.log("resource ->")
-			console.log(json);
+			// console.log("resource ->")
+			// console.log(json);
 			x += '<h2>'+json.title+'</h2>';
 			x += '<h3>'+json.subTitle+'</h3>';
 
-			console.log("coopEnrollment ->")
+			// console.log("coopEnrollment ->")
 			// <a href="url"> </a>
 
 			//replace the parameters from (i, item) to item in the function
 			$.each(json.coopEnrollment,function(item)
 			{	
-				console.log( "item: " + item);
-				console.log( "link: " + json.coopEnrollment.RITJobZoneGuidelink );
+			//	console.log( "item: " + item);
+			//	console.log( "link: " + json.coopEnrollment.RITJobZoneGuidelink );
 				// console.log("i: " + i);
 
 				x += '<h4><a href="'+ json.coopEnrollment.RITJobZoneGuidelink +'">' + json.coopEnrollment.title +'</a></h4>';
@@ -272,10 +314,10 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 			
 			// also, replace the parameters from (j, jtem) to (jtem) for array
 			// and place it outside of the first loop
-			console.log("coopEnroll detail: ->");
+			// console.log("coopEnroll detail: ->");
 			$.each(json.coopEnrollment.enrollmentInformationContent,function(j, jtem)
 			{
-				console.log(jtem);
+				// console.log(jtem);
 				x += '<h5>' + jtem.title + '</h5>';
 				x += '<h6>' + jtem.description + '</h6>';
 
@@ -300,7 +342,7 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 		var id = $(who).attr('data-id');
 myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 
-	console.log('facMore = ' + json.interestArea);	
+	// console.log('facMore = ' + json.interestArea);	
 	}) // end path
 
 

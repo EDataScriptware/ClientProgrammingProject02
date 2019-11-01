@@ -47,3 +47,7 @@ img
     float: none;
     margin-left: 25%;
 }
+caption
+{
+    margin-top: .75em;
+}
