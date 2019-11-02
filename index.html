@@ -163,7 +163,7 @@ myXHR('get',{'path':'/minors/'}).done(function(json){
 
 // get the /employment/ information onto the page
 myXHR('get',{'path':'/employment/'}).done(function(json){
-	console.log(json);
+	// console.log(json);
 	var x = '';
 	x+= "<h2>" + json.introduction.title + "</h2>"
 
@@ -180,7 +180,7 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 
 	$.each(json.degreeStatistics.statistics,function(i, item)
 	{
-		console.log(item);
+		// console.log(item);
 
 		x+= "<h4>" + item.value + "</h4>";
 		x+= "<h5>" + item.description + "</h5>";
@@ -190,7 +190,7 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 
 	$.each(json.employers.employerNames,function(i, item)
 	{
-		console.log(item);
+		// console.log(item);
 
 		x+= "<h4>" + item + "</h4>";
 	}); // end employerNames
@@ -199,7 +199,7 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 
 	$.each(json.careers.careerNames,function(i, item)
 	{
-		console.log(item);
+		// console.log(item);
 
 		x+= "<h4>" + item + "</h4>";
 	}); // end employerNames
@@ -207,9 +207,11 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 	 x += "<table>"
 		x += "<caption>" + json.coopTable.title + "</caption>";
 		x+="<tr><th>employer</th><th>degree</th><th>city</th><th>term</th>"
+	
+	
 	 $.each(json.coopTable.coopInformation,function(i, item)
 	{
-		console.log(item);
+		// console.log(item);
 
 
 
@@ -226,7 +228,7 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 	x += "<tr><th>employer</th><th>degree</th><th>city</th><th>title</th><th>startDate</th>"
 	$.each(json.employmentTable.professionalEmploymentInformation,function(i, item)
 	{
-		console.log(item);
+		// console.log(item);
 
 
 
@@ -243,7 +245,6 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 
 
 }); //end /employment
-
 
 
 
@@ -298,32 +299,80 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 			x += '<h2>'+json.title+'</h2>';
 			x += '<h3>'+json.subTitle+'</h3>';
 
-			// console.log("coopEnrollment ->")
-			// <a href="url"> </a>
 
-			//replace the parameters from (i, item) to item in the function
-			$.each(json.coopEnrollment,function(item)
-			{	
-			//	console.log( "item: " + item);
-			//	console.log( "link: " + json.coopEnrollment.RITJobZoneGuidelink );
-				// console.log("i: " + i);
+			x += "<h2>" + json.studyAbroad.title + "</h2>";
+			x += "<p>" + json.studyAbroad.description + "</p>";
 
-				x += '<h4><a href="'+ json.coopEnrollment.RITJobZoneGuidelink +'">' + json.coopEnrollment.title +'</a></h4>';
-				return false; // loop run once
-			}); // end resource
-			
-			// also, replace the parameters from (j, jtem) to (jtem) for array
-			// and place it outside of the first loop
-			// console.log("coopEnroll detail: ->");
-			$.each(json.coopEnrollment.enrollmentInformationContent,function(j, jtem)
+
+			$.each(json.studyAbroad.places,function(j, item)
 			{
 				// console.log(jtem);
-				x += '<h5>' + jtem.title + '</h5>';
-				x += '<h6>' + jtem.description + '</h6>';
+				x += '<h5>' + item.nameOfPlace + '</h5>';
+				x += '<h6>' + item.description + '</h6>';
 
-			});
+			}); //end places
 
 
+			// student services
+			x+= "<h2>" + json.studentServices.title + "</h2>";
+			x+= "<h3>" + json.studentServices.academicAdvisors.title + "</h3>";
+			x+= "<p>" + json.studentServices.academicAdvisors.description + "</p>";
+			x+= '<a href="' + json.studentServices.academicAdvisors.faq.contentHref + '">' + json.studentServices.academicAdvisors.faq.title + "</h5></a>";
+
+			console.log(json.studentServices.professonalAdvisors);
+			x+= "<h2>" + json.studentServices.professonalAdvisors.title + "</h2>";
+			$.each(json.studentServices.professonalAdvisors.advisorInformation,function(j, item)
+			{
+				 console.log(item);
+				x += '<h5>' + item.name + '</h5>';
+				x += '<h6>' + item.department + '</h6>';
+				x += '<h6>' + item.email + '</h6>';
+
+
+			}); //end profesonalAdvisors
+
+			x+= "<h2>" + json.studentServices.facultyAdvisors.title + "</h2>";
+			x+= "<h4>" + json.studentServices.facultyAdvisors.description + "</h4>";
+
+			x+= "<h3>" + json.studentServices.istMinorAdvising.title + "</h3>";
+			$.each(json.studentServices.istMinorAdvising.minorAdvisorInformation,function(j, item)
+			{
+				 //console.log(item);
+				x += '<h5>' + item.title + '</h5>';
+				x += '<h6>' + item.advisor + '</h6>';
+				x += '<h6>' + item.email + '</h6>';
+
+
+			}); //end minorAdvisorInformation
+
+			x+= "<h2>" + json.tutorsAndLabInformation.title + "</h2>";
+			x+= "<h4>" + json.tutorsAndLabInformation.description + "</h4>";
+			x+= "<h6>" + json.tutorsAndLabInformation.tutoringLabHoursLink + "</h6>";
+
+			x+= "<h2>" + json.studentAmbassadors.title + "</h2>";
+			x+= '<img src = "' + json.studentAmbassadors.ambassadorsImageSource + '">';
+
+			$.each(json.studentAmbassadors.subSectionContent,function(j, item)
+			{
+				 //console.log(item);
+			
+				if (item.title == "apply")
+				{
+					x+= '<a href="' + json.studentAmbassadors.applicationFormLink + '">' + item.description + "</h5></a>";
+
+				}
+				else 
+				{
+				x += '<h5>' + item.title + '</h5>';
+				x += '<h6>' + item.description + '</h6>';
+
+				}
+			
+
+
+			}); //end subSectionContent
+
+			x+= "<p>" + json.tutorsAndLabInformation.tutoringLabHoursLink + "</p>";
 
 			$('#resources').html(x);
 		}); //end /resource
@@ -379,6 +428,8 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 </script>
 </head>
 <body>
+
+
 	<section id="header"></section>
 
 	<section id="people"></section>
@@ -396,6 +447,7 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 	<section id="research"></section>
 
 	<section id="resources"></section>
+
 
 </body>
 </html>
