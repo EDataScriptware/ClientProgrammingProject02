@@ -406,14 +406,29 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 
 			$('#resources').html(x);
 		}); //end /resource
-		myXHR('get',{'path':'/news/'}).done(function(json){
+myXHR('get',{'path':'/news/'}).done(function(json){
+
+			var x = '';
+			console.log(json);
+
+			x += "<table>"
+	x += "<caption> Old News </caption>";
+	x += "<tr><th>date</th><th>title</th><th>description</th>"
+	$.each(json.older,function(i, item)
+	{
+		// console.log(item);
 
 
+		x+= "<tr><th>" + item.date + "</th>";
+		x+= "<th>" + item.title + "</th>";
+		x+= "<th>" + item.description + "</th></tr>";
 
+	}); // end employerNames
+	x += "</table>";
 
 
 			$('#news').html(x);
-		});
+});
 
 
 
