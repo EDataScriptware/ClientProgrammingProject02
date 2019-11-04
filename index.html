@@ -363,19 +363,59 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 				}
 				else 
 				{
-				x += '<h5>' + item.title + '</h5>';
-				x += '<h6>' + item.description + '</h6>';
+					x += '<h5>' + item.title + '</h5>';
+					x += '<h6>' + item.description + '</h6>';
 
 				}
 			
-
+				x+= '<a href="' + json.studentAmbassadors.applicationFormLink + '">' + item.description + "</h5></a>";
 
 			}); //end subSectionContent
 
-			x+= "<p>" + json.tutorsAndLabInformation.tutoringLabHoursLink + "</p>";
+			
+
+
+			x+= "<p>" + json.studentAmbassadors.note + "</p>";
+
+			$.each(json.forms.graduateForms,function(i, item)
+			{
+					
+			
+				x+= '<h5><a href="' + item.href + '">' + item.formName + "</h5></a>";
+
+			}); //end graduateForms
+
+			$.each(json.forms.undergraduateForms,function(i, item)
+			{
+					
+			
+				x+= '<h5><a href="' + item.href + '">' + item.formName + "</h5></a>";
+
+			}); //end undergraduateForms
+
+			x+= '<h2><a href="' + json.coopEnrollment.RITJobZoneGuidelink + '">' + json.coopEnrollment.title + "</h2></a>";
+
+			$.each(json.coopEnrollment.enrollmentInformationContent,function(i, item)
+			{
+
+			x += "<h4>" + item.title + "</h4>";		
+			x += "<h5>" + item.description + "</h5>";		
+	
+			}); //end undergraduateForms
+
 
 			$('#resources').html(x);
 		}); //end /resource
+		myXHR('get',{'path':'/news/'}).done(function(json){
+
+
+
+
+
+			$('#news').html(x);
+		});
+
+
 
 
 
@@ -447,6 +487,8 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 	<section id="research"></section>
 
 	<section id="resources"></section>
+
+	<section id="news"></section>
 
 
 </body>
