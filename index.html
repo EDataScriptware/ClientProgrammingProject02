@@ -406,10 +406,10 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 
 			$('#resources').html(x);
 		}); //end /resource
+
 myXHR('get',{'path':'/news/'}).done(function(json){
 
 			var x = '';
-			console.log(json);
 
 			x += "<table>"
 	x += "<caption> Old News </caption>";
@@ -423,15 +423,47 @@ myXHR('get',{'path':'/news/'}).done(function(json){
 		x+= "<th>" + item.title + "</th>";
 		x+= "<th>" + item.description + "</th></tr>";
 
-	}); // end employerNames
+	}); // end older
 	x += "</table>";
 
 
 			$('#news').html(x);
 });
 
+myXHR('get',{'path':'/footer/'}).done(function(json){
+
+	var x = '';
+
+	x += "<h2>" + json.social.title + "</h2>";
+	x += "<h3>" + json.social.tweet + "</h3>";
+	x += "<h5>" + json.social.by + "</h5>";
+	x += "<h6>" + json.social.twitter + "</h6>";
+	x += "<h6>" + json.social.facebook + "</h6>";
+	
+
+	$.each(json.quickLinks,function(i, item)
+	{
+		// console.log(item);
+		x+= '<h3><a href="' + item.href + '">' + item.title + "</h3></a>";
 
 
+	}); // end employerNames
+
+	x += "<h3>" + json.copyright.title + "</h3>";
+	x += "<h6>" + json.copyright.html + "</h6>";
+	x += "<h6>" + json.news + "</h6>";
+
+
+	$('#footer').html(x);
+});
+
+{
+var x = '';
+	x += '<iframe id="map-iframe" src="http://ist.rit.edu/api/map/" width="100%" height="600px">';
+	x += '<p>Your browser does not show the employment map.  You are using an old browser. Update your browser. </p>'
+	x += '</iframe>'
+	$('#map').html(x);
+}
 
 
 		// ------------------------------------------------------------
@@ -504,6 +536,10 @@ myXHR('get',{'path':'/people/faculty/username=' + id}).done(function(json){
 	<section id="resources"></section>
 
 	<section id="news"></section>
+
+	<section id="footer"></section>
+
+	<section id="map"></section>
 
 
 </body>
