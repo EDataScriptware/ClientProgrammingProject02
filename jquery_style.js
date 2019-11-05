@@ -31,40 +31,40 @@ function jquery_style()
     });
 
     $(".faculty").css({
-        "color": "red",
-        "border": "solid 2px black",
-        "position": "relative",
-        "float": "left",
-        "padding": "2.5%",
-        "margin-left": "1%",
-        "margin-bottom": "1%",
-        "display": "block"
+        "color": "red",                 // color
+        "border": "solid 2px black",    // border
+        "position": "relative",         // position
+        "float": "left",                // float
+        "padding": "2.5%",              // padding
+        "margin-left": "1%",            // margin-left
+        "margin-bottom": "1%",          // margin-bottom
+        "display": "block"              // display
     });
 
     $("#people").css({
-        "display": "block"
+        "display": "block"              // display
     });
 
     $("#content").css({
-        "float": "right",
-        "bottom": "0px"
+        "float": "right",               // float
+        "bottom": "0px"                 // bottom
     });
 
     $("#about").css({
-        "float": "left",
-        "display": "block",
-        "bottom": "0px"
+        "float": "left",                // float
+        "display": "block",             // display
+        "bottom": "0px"                 // bottom
     });
 
     $("img").css({
-        "height": "100px",
-        "float": "none",
-        "margin-left": "25%"
+        "height": "100px",              // height
+        "float": "none",                // float
+        "margin-left": "25%"            // margin-left
     });
 
 
     $("caption").css({
-        "margin-top": ".75em",
+        "margin-top": ".75em",          // margin-top
     });
 
   
