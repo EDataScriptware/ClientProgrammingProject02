@@ -444,9 +444,7 @@ myXHR('get',{'path':'/footer/'}).done(function(json){
 
 
 	$('#footer').html(x);
-	});
-
-$(".")
+});
 /*
 {
 var x = '';
@@ -462,7 +460,7 @@ var x = '';
 		
 
 		
-        jquery_style();		
+        jquery_style()		
 	});	// end document ready
 	
 	function facMore ( who ){

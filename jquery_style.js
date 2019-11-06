@@ -30,7 +30,7 @@ function jquery_style()
 
     });
 
-    $("json.faculty").css({
+    $(".faculty").css({
         "color": "red",                 // color
         "border": "solid 2px black",    // border
         "position": "relative",         // position
