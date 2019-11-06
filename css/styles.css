@@ -1,3 +1,8 @@
+html
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #header
 {
     color: black;
@@ -11,6 +16,17 @@
     border-bottom-color: black;
     background-color: orangered;
     z-index: 100;
+}
+
+
+#aboutTitle
+{
+    color: yellow; 
+}
+
+#about
+{
+    color: blue;
 }
 
 .faculty

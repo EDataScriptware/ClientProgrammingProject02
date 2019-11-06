@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 		// get the /about/ information onto the page
 		myXHR('get',{'path':'/about/'}).done(function(json){
-			var x = '<h2>'+json.title+'</h2>';
+			var x = '<h2 id="aboutTitle">'+json.title+'</h2>';
 			x+='<p>'+json.description+'</p>';
 			x+='<p>'+json.quote+'</p>';
 			x+='<p>'+json.quoteAuthor+'</p>';
@@ -460,7 +460,6 @@ var x = '';
 		
 
 		
-        jquery_style()		
 	});	// end document ready
 	
 	function facMore ( who ){
