@@ -160,52 +160,67 @@ myXHR('get',{'path':'/minors/'}).done(function(json){
 
 // get the /employment/ information onto the page
 myXHR('get',{'path':'/employment/'}).done(function(json){
+	
+
 	// console.log(json);
 	var x = '';
-	x+= "<hr><h2>" + json.introduction.title + "</h2>"
+
+	x+='<h2>Careers</h2>';
+
+	x+= "<h3>" + json.introduction.title + "</h3>"
 
 	$.each(json.introduction.content,function(i, item)
 	{
 		// console.log(item);
 
-		x+= "<h2>" + item.title + "</h2>";
+		x+= "<h4>" + item.title + "</h4>";
 		x+= "<p>" + item.description + "</p>";
 		
 	}); // end introduction
 
-	x += "<h2>" + json.degreeStatistics.title + "</h2>"
+	x += "<h4>" + json.degreeStatistics.title + "</h4>"
 
 	$.each(json.degreeStatistics.statistics,function(i, item)
 	{
 		// console.log(item);
 
-		x+= "<h4>" + item.value + "</h4>";
-		x+= "<h5>" + item.description + "</h5>";
+		x+= "<h5>" + item.value + "</h5>";
+		x+= "<h6>" + item.description + "</h6>";
 	}); // end degreeStatistics
 
-	x += "<h2>" + json.employers.title + "</h2>"
+	x += "<h4>" + json.employers.title + "</h4>"
 
 	$.each(json.employers.employerNames,function(i, item)
 	{
 		// console.log(item);
 
-		x+= "<h4>" + item + "</h4>";
+		x+= "<h5>" + item + "</h5>";
 	}); // end employerNames
 
-	x += "<h2>" + json.careers.title + "</h2>"
+	x += "<h3>" + json.careers.title + "</h3>"
 
 	$.each(json.careers.careerNames,function(i, item)
 	{
 		// console.log(item);
 
-		x+= "<h4>" + item + "</h4>";
+		x+= "<h5>" + item + "</h5>";
 	}); // end employerNames
 
-	 x += "<table>"
+		x += '<table div class="men_ex">';
+		
 		x += "<caption>" + json.coopTable.title + "</caption>";
-		x+="<tr><th>employer</th><th>degree</th><th>city</th><th>term</th>"
 	
-	
+		x += '<p><button id="hidediv">Hide menu</button>'
+		x += '<button id="showdiv">Show menu</button></p>';
+
+		 
+ // testing
+ $("#hidediv").click(function()
+ {
+	 alert("Am I being clicked?");
+ });
+
+
 	 $.each(json.coopTable.coopInformation,function(i, item)
 	{
 		// console.log(item);
@@ -222,7 +237,6 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 
 	x += "<table>"
 	x += "<caption>" + json.employmentTable.title + "</caption>";
-	x += "<tr><th>employer</th><th>degree</th><th>city</th><th>title</th><th>startDate</th>"
 	$.each(json.employmentTable.professionalEmploymentInformation,function(i, item)
 	{
 		// console.log(item);

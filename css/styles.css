@@ -127,6 +127,13 @@ html
 caption
 {
     margin-top: .75em;
+    font-weight: bold;
+}
+
+table, caption
+{
+ background-color: white;   
+ border: black solid 1px;
 }
 
 #map-div 
