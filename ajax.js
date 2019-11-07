@@ -143,7 +143,7 @@ myXHR('get',{'path':'/minors/'}).done(function(json){
 	// console.log(json);
 	var x = '';
 
-	x+='<hr><h2>Undergraduate Minors</h2>';
+	x+='<h2>Undergraduate Minors</h2>';
 
 	$.each(json.UgMinors,function(i,item)
 	{
