@@ -3,7 +3,8 @@
 $(document).ready(function(){
 		
 		//HEADER
-		$('#header').html('<h1>IST Department Site</h1>');
+
+		$('#header').html('<img src="media/RIT_logo.png" alt="RIT_logo" id="RIT_logo"><h1 id="header_title">IST Department Site</h1>');
 
 
 
@@ -52,12 +53,14 @@ $(document).ready(function(){
 			
 			var x='';
 			
+			x+='<h2>Undergraduate Degrees</h2>';
+
 			$.each(json.undergraduate,function(i,item){
 				//console.log(i+' = '+item);
 				
 				if (item.title != null)
 				{
-					x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
+					x+='<h3>'+item.title+' ('+item.degreeName+')</h3>';
 
 					x+='<p>'+item.description+'</p>';
 				
@@ -97,12 +100,14 @@ myXHR('get',{'path':'/degrees/graduate/'}).done(function(json){
 			
 			var x='';
 			
+			x+='<h2>Graduate Degrees</h2>';
+
 			$.each(json.graduate,function(i,item){
 				//console.log(i+' = '+item);
 				
 				if (item.title != null)
 				{
-					x+='<h2>'+item.title+' ('+item.degreeName+')</h2>';
+					x+='<h3>'+item.title+' ('+item.degreeName+')</h3>';
 
 					x+='<p>'+item.description+'</p>';
 				

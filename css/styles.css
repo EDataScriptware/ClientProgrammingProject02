@@ -3,6 +3,15 @@ html
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/*img 
+{
+    height: 100px;
+    float: none;
+    margin-left: 25%;
+}
+*/
+
+
 #header
 {
     color: black;
@@ -18,15 +27,47 @@ html
     z-index: 100;
 }
 
+#RIT_logo 
+{
+  height: 25px;
+  float: left;
+  margin-left: 1.75%;
+  margin-top: 1.5%;
+}
+#header_title
+{
+    margin-top: 1.5%;
+    font-family: 'Courier New', Courier, monospace;
+}
 
 #aboutTitle
 {
-    color: yellow; 
+    color: orange; 
+    font-weight: 900;
 }
 
 #about
 {
     color: blue;
+    text-align: center;
+    margin-top: 1.25em;
+    width: 45%;
+    vertical-align: middle;
+    margin-left: 27.5%;
+    margin-right: 35%;
+    border: black 1px solid;
+
+}
+
+#undergraduate
+{
+    float: left;
+}
+
+#graduate
+{
+    float: right;
+    text-align: right;;
 }
 
 .faculty
@@ -57,12 +98,7 @@ html
     float: left;
     bottom: 0px;
 }
-img 
-{
-    height: 100px;
-    float: none;
-    margin-left: 25%;
-}
+
 caption
 {
     margin-top: .75em;
