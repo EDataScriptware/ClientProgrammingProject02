@@ -4,7 +4,7 @@ $(document).ready(function(){
 		
 		//HEADER
 
-		$('#header').html('<img src="media/RIT_logo.png" alt="RIT_logo" id="RIT_logo"><h1 id="header_title">IST Department Site</h1>');
+		$('#header').html('<img src="media/RIT_logo.png" alt="RIT_logo" id="RIT_logo"><h1 id="headerTitle">IST Department Site</h1>');
 
 
 
@@ -463,7 +463,6 @@ var x = '';
 		// ------------------------------------------------------------
 
 		
-
 		
 	});	// end document ready
 	
