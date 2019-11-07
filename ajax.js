@@ -142,10 +142,13 @@ myXHR('get',{'path':'/degrees/graduate/'}).done(function(json){
 myXHR('get',{'path':'/minors/'}).done(function(json){
 	// console.log(json);
 	var x = '';
+
+	x+='<hr><h2>Undergraduate Minors</h2>';
+
 	$.each(json.UgMinors,function(i,item)
 	{
-			x += '<h2>'+item.name+'</h2>';
-			x +='<h3>'+item.title+'</h3>';
+			x += '<h3>'+item.name+'</h3>';
+			x +='<h4>'+item.title+'</h4>';
 			x +='<p>'+item.description+'</p>';
 			x +='<p>'+item.courses+'</p>';		
 		
@@ -159,7 +162,7 @@ myXHR('get',{'path':'/minors/'}).done(function(json){
 myXHR('get',{'path':'/employment/'}).done(function(json){
 	// console.log(json);
 	var x = '';
-	x+= "<h2>" + json.introduction.title + "</h2>"
+	x+= "<hr><h2>" + json.introduction.title + "</h2>"
 
 	$.each(json.introduction.content,function(i, item)
 	{

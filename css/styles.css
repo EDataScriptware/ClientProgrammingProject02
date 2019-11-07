@@ -1,6 +1,7 @@
 html
 {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #fffafa;
 }
 
 /*img 
@@ -21,9 +22,9 @@ html
     margin-top: -25px;
     position: sticky;
     text-align: center;
-    border: solid 2px orangered;
+    border: solid 2px #f76802;
     border-bottom-color: black;
-    background-color: orangered;
+    background-color: #f76802;
     z-index: 100;
 }
 
@@ -34,6 +35,13 @@ html
   margin-left: 1.75%;
   margin-top: 1.5%;
 }
+
+/* Undergraduate and Graduate */
+#degrees
+{
+    background-color: black;
+}
+
 #headerTitle
 {
     margin-top: 1.5%;
@@ -42,7 +50,7 @@ html
 
 #aboutTitle
 {
-    color: orange; 
+    color: #f76802; 
     font-weight: 900;
 }
 
@@ -56,18 +64,25 @@ html
     margin-left: 27.5%;
     margin-right: 35%;
     border: black 1px solid;
+    background-color: white;
 
 }
 
 #undergraduate
 {
     float: left;
+    display: block;
+    margin-left: 52%;
 }
 
 #graduate
 {
     float: right;
-    text-align: right;;
+    text-align: right;
+    display: block;
+    margin-right: 52%;
+    margin-top: -34.5%;
+    direction: rtl;
 }
 
 .faculty
@@ -109,6 +124,16 @@ caption
     overflow: hidden;
     position: relative;
 }
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+  }
 
 #map-iframe {
     top : -300px;

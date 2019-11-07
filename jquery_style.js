@@ -1,14 +1,3 @@
-/*
-Template
-
-single jquery css
-$("p").css("background-color", "yellow");
-
-multiple jquery css
-$("p").css({"background-color": "yellow", "font-size": "200%"});
-
-*/
-
 // onLoad
 function jquery_style()
 {
