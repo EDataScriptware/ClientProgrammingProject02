@@ -90,16 +90,26 @@ html
     color: red;
     border: solid 2px black;
     position: relative;
-    float: left;
-    padding: 2.5%;
+    display: inline-block;
     margin-left: 1%;
     margin-bottom: 1%;
-    display: block;
+    background-color: white;
+    width: 200px;
+    margin-top: 1%;
+    top: 0px;
     
+}
+.facultyImages
+{
+
+    width: 200px;
+    height: 215px;
+    border-bottom: solid black 3px;
 }
 #people
 {
     display: block;
+    background-color: white;;
 }
 #content
 {

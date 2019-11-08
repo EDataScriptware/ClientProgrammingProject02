@@ -11,20 +11,21 @@ $(document).ready(function(){
 		// PEOPLE
 		myXHR('get',{'path':'/people/faculty'}).done(function(json){
 			var x = '';
-			x+= ''
+			x += "<h2>Golisano Faculty</h2>"
 			$.each(json.faculty, function(k, ktem){
 				//console.log(k + ' -- ' + ktem)
 
-
-                // An interesting approach showed to me by Aaron Kelly - I have decided not to use this approach
+				// An interesting jQuery approach showed to me by Aaron Kelly 
+				// - I have decided not to use this approach
 				x += '<div class="faculty" onclick="facMore(this)"';
+
 				x += ' data-id="' + $(this)[0].username + '"';
 				x += 'style ="cursor:pointer;">';
-				x += '<h2>' + $(this)[0].name + '</h2>';
+				x += '<img class="facultyImages" src = "' + $(this)[0].imagePath + '"/>';
+				x += '<h4>' + $(this)[0].name + '</h4>';
 				x += '<p>' + $(this)[0].title + '</p>';
-				x += '<img src = "' + $(this)[0].imagePath + '"/>';
-
 				x += "</div>";
+
 			})
 			$('#people').html(x);
 
