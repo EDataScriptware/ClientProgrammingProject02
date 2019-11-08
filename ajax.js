@@ -310,11 +310,12 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 			var x = '';
 			// console.log("resource ->")
 			// console.log(json);
-			x += '<h2>'+json.title+'</h2>';
-			x += '<h3>'+json.subTitle+'</h3>';
+			x += '<div class="resourceBlock>';
+			x += '<h3>'+json.title+'</h3>';
+			x += '<h4>'+json.subTitle+'</h4>';
 
 
-			x += "<h2>" + json.studyAbroad.title + "</h2>";
+			x += "<h3>" + json.studyAbroad.title + "</h3>";
 			x += "<p>" + json.studyAbroad.description + "</p>";
 
 
@@ -325,25 +326,31 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 				x += '<h6>' + item.description + '</h6>';
 
 			}); //end places
+			x += '</div>';
 
-
+			x += '<div class="resourceBlock">';
 			// student services
-			x+= "<h2>" + json.studentServices.title + "</h2>";
-			x+= "<h3>" + json.studentServices.academicAdvisors.title + "</h3>";
+			x+= "<h3>" + json.studentServices.title + "</h3>";
+			x+= "<h4>" + json.studentServices.academicAdvisors.title + "</h4>";
 			x+= "<p>" + json.studentServices.academicAdvisors.description + "</p>";
 			x+= '<a href="' + json.studentServices.academicAdvisors.faq.contentHref + '">' + json.studentServices.academicAdvisors.faq.title + "</h5></a>";
 
 			console.log(json.studentServices.professonalAdvisors);
-			x+= "<h2>" + json.studentServices.professonalAdvisors.title + "</h2>";
+			x+= "<h3>" + json.studentServices.professonalAdvisors.title + "</h3>";
 			$.each(json.studentServices.professonalAdvisors.advisorInformation,function(j, item)
 			{
+				x += '<div class="resourceStudentServicesAdvisors">';
 				 console.log(item);
 				x += '<h5>' + item.name + '</h5>';
 				x += '<h6>' + item.department + '</h6>';
 				x += '<h6>' + item.email + '</h6>';
+				x += '</div>';
+
 
 
 			}); //end profesonalAdvisors
+			x += '</div>';
+
 
 			x+= "<h2>" + json.studentServices.facultyAdvisors.title + "</h2>";
 			x+= "<h4>" + json.studentServices.facultyAdvisors.description + "</h4>";

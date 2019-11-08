@@ -4,15 +4,6 @@ html
     background-color: #fffafa;
 }
 
-/*img 
-{
-    height: 100px;
-    float: none;
-    margin-left: 25%;
-}
-*/
-
-
 #header
 {
     color: black;
@@ -73,16 +64,23 @@ html
     float: left;
     display: block;
     margin-left: 52%;
-}
+    border: black 2px solid;
+    background-color: white;
+    padding: 1%;
 
+}
 #graduate
 {
     float: right;
     text-align: right;
     display: block;
     margin-right: 52%;
-    margin-top: -34.5%;
+    margin-top: -29.5%;
     direction: rtl;
+    border: black 2px solid;
+    background-color: white;
+    padding: 1%;
+
 }
 
 .faculty
@@ -172,6 +170,27 @@ table, caption
     margin-left: .5%;
     margin-top: .5%;   
     padding: .5%;
+    display: block;
+}
+
+.resourceBlock
+{
+    display: inline-block;
+    background-color: green;
+    border: solid 1.5px black;
+    color: red;
+    padding: .5%;
+    width: 10px;
+}
+
+.resourceStudentServicesAdvisors{
+    display: inline-block;
+    margin-left: 1%;
+    border: solid 1.5px black;
+    padding: .5%;
+    width: 10%;
+    height: 10%
+
 }
 
 #map-div 
