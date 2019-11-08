@@ -6,12 +6,10 @@ $(document).ready(function(){
 
 		$('#header').html('<img src="media/RIT_logo.png" alt="RIT_logo" id="RIT_logo"><h1 id="headerTitle">IST Department Site</h1>');
 
-
-
 		// PEOPLE
 		myXHR('get',{'path':'/people/faculty'}).done(function(json){
 			var x = '';
-			x += "<h2>Golisano Faculty</h2>"
+			x += '<h2 id="facultyTitle">GCCIS Faculty</h2>'
 			$.each(json.faculty, function(k, ktem){
 				//console.log(k + ' -- ' + ktem)
 
@@ -264,10 +262,13 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 myXHR('get',{'path':'/research/'}).done(function(json){
 	// console.log(json);
 	var x = '';
+	x += '<h2>Research</h2>';
+	x += '<h3>By Faculty</h3>';
+
 	$.each(json.byFaculty,function(i,item)
 	{
-			x += '<h2>'+item.facultyName+'</h2>';
-			x +='<h3>'+item.username+'</h3>';
+			x += '<h4>'+item.facultyName+'</h4>';
+			x +='<h5>'+item.username+'</h5>';
 
 			var y='<ul>';
 
@@ -280,10 +281,11 @@ myXHR('get',{'path':'/research/'}).done(function(json){
 
 		$('#research').html(x);
 	}); // end byFaculty
+	x += '<h3>By Faculty</h3>';
 
 	$.each(json.byInterestArea,function(i,item)
 	{
-			x += '<h2>'+item.areaName+'</h2>';
+			x += '<h4>'+item.areaName+'</h4>';
 
 			var y='<ul>';
 
