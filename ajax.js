@@ -365,13 +365,20 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 
 			}); //end minorAdvisorInformation
 			x+= '</div>'
+
+			x += '<div class="tutorAndLabInformation">'
 			x+= "<h2>" + json.tutorsAndLabInformation.title + "</h2>";
 			x+= "<h4>" + json.tutorsAndLabInformation.description + "</h4>";
-			x+= "<h6>" + json.tutorsAndLabInformation.tutoringLabHoursLink + "</h6>";
+			x+= '<p><a href="' + json.tutorsAndLabInformation.tutoringLabHoursLink+ '">'+ json.tutorsAndLabInformation.tutoringLabHoursLink + "</a></p>";
+			x += '</div>';
 
-			x+= "<h2>" + json.studentAmbassadors.title + "</h2>";
+			// Student Ambassdors
+			x += '<div class ="studentAmbassadors">'
+			x += '<div class ="studentAmbassadorsHeader">'
+			x+= "<h3>" + json.studentAmbassadors.title + "</h3>";
 			x+= '<img src = "' + json.studentAmbassadors.ambassadorsImageSource + '">';
-
+			x += '</div>';
+			x += '<div class ="studentAmbassorsDetail">'
 			$.each(json.studentAmbassadors.subSectionContent,function(j, item)
 			{
 				 //console.log(item);
@@ -383,45 +390,46 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 				}
 				else 
 				{
-					x += '<h5>' + item.title + '</h5>';
-					x += '<h6>' + item.description + '</h6>';
-
+					x += '<h4>' + item.title + '</h4>';
+					x += '<p>' + item.description + '</p>';
 				}
+
+				
 			
-				x+= '<a href="' + json.studentAmbassadors.applicationFormLink + '">' + item.description + "</h5></a>";
 
 			}); //end subSectionContent
-
-			
-
-
 			x+= "<p>" + json.studentAmbassadors.note + "</p>";
 
-			$.each(json.forms.graduateForms,function(i, item)
-			{
-					
-			
-				x+= '<h5><a href="' + item.href + '">' + item.formName + "</h5></a>";
+	
+			x+= "</div>"
+			x+= "</div>"
 
-			}); //end graduateForms
-
+			x += "<h4>Undergraduate Forms</h4><h5>"
 			$.each(json.forms.undergraduateForms,function(i, item)
 			{
-					
-			
-				x+= '<h5><a href="' + item.href + '">' + item.formName + "</h5></a>";
-
+				x+= '<div class="formButton"><a href="' + item.href + '">' + item.formName + "</h5></a></div>";
 			}); //end undergraduateForms
+			x += "</h5>"
 
-			x+= '<h2><a href="' + json.coopEnrollment.RITJobZoneGuidelink + '">' + json.coopEnrollment.title + "</h2></a>";
+			x += "<h4>Graduate Forms</h4><h5>"
+			$.each(json.forms.graduateForms,function(i, item)
+			{
+				x+= '<div class="formButton"><a href="' + item.href + '">' + item.formName + "</a></div>";
+			}); //end graduateForms
+			x += "</h5>"
+
+			
+			x += '<div class="coopEnrollment">'
+			x += '<h2><a href="' + json.coopEnrollment.RITJobZoneGuidelink + '">' + json.coopEnrollment.title + "</h2></a>";
 
 			$.each(json.coopEnrollment.enrollmentInformationContent,function(i, item)
 			{
 
-			x += "<h4>" + item.title + "</h4>";		
-			x += "<h5>" + item.description + "</h5>";		
+				x += "<h4>" + item.title + "</h4>";		
+				x += "<h5>" + item.description + "</h5>";		
 	
 			}); //end undergraduateForms
+			x += '</div>'
 
 
 			$('#resources').html(x);

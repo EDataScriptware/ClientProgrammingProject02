@@ -217,6 +217,59 @@ table, caption
     height: 10%;
 }
 
+.tutorAndLabInformation
+{
+    background-color: #f76802;
+    border: solid 2px black;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: .5%;   
+    padding: .5%;
+    display: block;
+    text-align: center;
+}
+
+.studentAmbassadors
+{
+    border: solid 2px black;
+    margin-top: 1%;
+    background-color: rgb(250, 250, 250);
+}
+
+.studentAmbassadorsHeader
+{
+    color: red;
+    background-color: rgb(240, 240, 240);
+    border: solid 2px black;
+    top: 0px;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 1.5%;
+    padding-bottom: 1%;
+}
+
+.studentAmbassorsDetail
+{
+    margin-left: 1%;
+    color: blue;
+}
+.formButton
+{
+    border: 3px solid black;
+    background-color: #f76802;
+    position: relative;
+    display: inline-block;
+    font-size: 1.25em;
+    padding: 1.15%;
+    margin-left: 1%;
+}
+.coopEnrollment
+{
+    border: solid 2px black;
+    margin-top: 1%;
+    background-color: rgb(250, 250, 250);
+}
 #map-div 
 {
     width : 75%;
