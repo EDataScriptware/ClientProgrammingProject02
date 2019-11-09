@@ -461,6 +461,7 @@ myXHR('get',{'path':'/news/'}).done(function(json){
 myXHR('get',{'path':'/footer/'}).done(function(json){
 
 	var x = '';
+	x += '<div class="footerAdvertisement">'
 
 	x += "<h2>" + json.social.title + "</h2>";
 	x += "<h3>" + json.social.tweet + "</h3>";
@@ -469,18 +470,20 @@ myXHR('get',{'path':'/footer/'}).done(function(json){
 	x += "<h6>" + json.social.facebook + "</h6>";
 	
 
+	x += '<h3>'
 	$.each(json.quickLinks,function(i, item)
 	{
 		// console.log(item);
-		x+= '<h3><a href="' + item.href + '">' + item.title + "</h3></a>";
+		x+= '<div class="formButtonAd"><a href="' + item.href + '">' + item.title + "</a></div>";
 
 
 	}); // end employerNames
+	x += '</h3>'
+	x += '</div>'
 
-	x += "<h3>" + json.copyright.title + "</h3>";
-	x += "<h6>" + json.copyright.html + "</h6>";
-	x += "<h6>" + json.news + "</h6>";
-
+	x += '<div class= "copyright">'
+	x += "<h6>" + json.copyright.title + " " + json.copyright.html + " "  + json.news + "</h6>";
+	x += '</div>';
 
 	$('#footer').html(x);
 });
