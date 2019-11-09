@@ -1,9 +1,11 @@
+/* Apply to backgroun and all fonts */
 html
 {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fffafa;
 }
 
+/* Sticking RIT logo and title up*/
 #header
 {
     color: black;
@@ -19,6 +21,7 @@ html
     z-index: 100;
 }
 
+/* RIT LOGO in header*/
 #RIT_logo 
 {
   height: 25px;
@@ -33,18 +36,21 @@ html
     background-color: black;
 }
 
+/* the item title in header */
 #headerTitle
 {
     margin-top: 1.5%;
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* the item title in about */
 #aboutTitle
 {
     color: #f76802; 
     font-weight: 900;
 }
 
+/* Entire about */
 #about
 {
     text-align: center;
@@ -58,6 +64,7 @@ html
 
 }
 
+/* Entire undergraduate */
 #undergraduate
 {
     float: left;
@@ -68,6 +75,8 @@ html
     padding: 1%;
 
 }
+
+/* Entire graduate */
 #graduate
 {
     float: right;
@@ -82,7 +91,7 @@ html
 
 }
 
-
+/* specific input buttons */
 .buttons
 {
     margin-top: 1%;
@@ -92,17 +101,20 @@ html
     margin-right: 2%;
 }
 
+/* button hiding div */
 #hidediv
 {
     font-weight: 900;
     margin-right: 1.5%;
 }
 
+/* button showing div */
 #showdiv
 {
     font-weight: 900;
 }
 
+/* ALL TABLES */
 table
 {
     vertical-align: center;
@@ -110,6 +122,7 @@ table
     margin-left: 28.5%;
 }
 
+/* One faculty block style - applies to all faculties */
 .faculty
 {
     
@@ -124,6 +137,8 @@ table
     top: 0px;
     
 }
+
+/* Employment careers */
 .employmentCareers
 {
     float: left;
@@ -133,6 +148,7 @@ table
     padding: 1%;
 }
 
+/* Each faculty member's images*/
 .facultyImages
 {
 
@@ -140,6 +156,8 @@ table
     height: 215px;
     border-bottom: solid black 3px;
 }
+
+/* Entire #people*/
 #people
 {
     display: block;
@@ -150,17 +168,22 @@ table
     text-align: center;
 
 }
+
+/* title item in faculty */
 #facultyTitle
 {
     margin-left: .5%;
     text-align: left;
 }
+
+/* entire #people */
 #content
 {
     float: right;
     bottom: 0px;
 
 }
+/* entire #about */
 #about
 {
     display: block;
@@ -168,6 +191,7 @@ table
     bottom: 0px;
 }
 
+/* entire #minors */
 #minors
 {
     background-color: white;
@@ -178,18 +202,21 @@ table
 
 }
 
+/* all captions in a table*/
 caption
 {
     margin-top: .75em;
     font-weight: bold;
 }
 
+/* all tables and captions */
 table, caption
 {
  background-color: white;   
  border: black solid 1px;
 }
 
+/* entire #research */
 #research
 {
     background-color: white;
@@ -199,6 +226,7 @@ table, caption
     padding: .5%;
 }
 
+/* entire #resources */
 #resources
 {
     background-color: white;
@@ -209,6 +237,7 @@ table, caption
     display: block;
 }
 
+/* each resource blocks */
 .resourceBlock
 {
     vertical-align: middle;
@@ -221,6 +250,7 @@ table, caption
 
 }
 
+/* studentservicesadvisors item in studentservices resource*/
 .resourceStudentServicesAdvisors
 {
     vertical-align: middle;
@@ -236,7 +266,7 @@ table, caption
     height: 10%;
 }
 
-
+/* studentServicesIndividualFacultyAdvisors in studentservices resource*/ 
 .studentServicesIndividualFacultyAdvisors
 {
     vertical-align: middle;
@@ -253,6 +283,7 @@ table, caption
     height: 10%;
 }
 
+/* tutorlabandinformation block */
 .tutorAndLabInformation
 {
     background-color: #f76802;
@@ -265,6 +296,7 @@ table, caption
     text-align: center;
 }
 
+/* studentAmbassadors block*/
 .studentAmbassadors
 {
     border: solid 2px black;
@@ -272,6 +304,7 @@ table, caption
     background-color: rgb(250, 250, 250);
 }
 
+/* header of student ambassadors*/
 .studentAmbassadorsHeader
 {
     background-color: rgb(240, 240, 240);
@@ -284,10 +317,13 @@ table, caption
     padding-bottom: 1%;
 }
 
+/* details of student ambassadors */
 .studentAmbassorsDetail
 {
     margin-left: 1%;
 }
+
+/* all "buttons" that are not really buttons but are more of a link square clicker*/
 .formButton
 {
     border: 3px solid black;
@@ -299,6 +335,8 @@ table, caption
     margin-left: 1%;
     text-align: center;
 }
+
+/* entire coopenrollment block */
 .coopEnrollment
 {
     border: solid 2px black;
@@ -307,6 +345,7 @@ table, caption
     padding-left: 1%;
 }
 
+/* specific advertisement and separate form button not applied to #formButton*/
 .formButtonAd
 {
     border: 3px solid black;
@@ -320,24 +359,27 @@ table, caption
     
 }
 
+/* entire copyright */
 .copyright
 {
     text-align: center;
 }
 
+/* ALL LINKS */
 a
 {
     color: blue; 
     text-decoration-style: none;    
 }
 
+/* ALL LINKS when hovered */
 a:hover 
 {
     background-color: #ff6a00;
     color: black;
 }
 
-
+/* advertisement block in footer */
 .footerAdvertisement
 {
     background-color: #eb6200;
@@ -348,7 +390,7 @@ a:hover
     text-align: center;
 }
 
-
+/* entire iframe of contact us */
 #contact-iframe
 {
     margin-top: 1%;
@@ -360,6 +402,7 @@ a:hover
 
 }
 
+/* wrapping two blocks into one block */
 #footerWrap
 {
     position: relative;
@@ -367,6 +410,7 @@ a:hover
     width: 100%;
 }
 
+/* entire iframe of map */
 #map-iframe 
 {
     background-color: #f76802;
