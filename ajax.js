@@ -164,6 +164,8 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 	// console.log(json);
 	var x = '';
 
+	x += '<div class="employmentCareers">'
+
 	x+='<h2>Careers</h2>';
 
 	x+= "<h3>" + json.introduction.title + "</h3>"
@@ -197,28 +199,35 @@ myXHR('get',{'path':'/employment/'}).done(function(json){
 	}); // end employerNames
 
 	x += "<h3>" + json.careers.title + "</h3>"
-
+	x += "<ul>"
 	$.each(json.careers.careerNames,function(i, item)
 	{
 		// console.log(item);
 
-		x+= "<h5>" + item + "</h5>";
+		x+= "<li>" + item + "</li>";
 	}); // end employerNames
+	x += "</ul>"
 
-		x += '<table div class="men_ex">';
+	x += "</div>";
+
+		x += '<div class="menExDiv">';
+		x += '<table class="menEx">';
 		
 		x += "<caption>" + json.coopTable.title + "</caption>";
 	
-		x += '<p><button id="hidediv">Hide menu</button>'
-		x += '<button id="showdiv">Show menu</button></p>';
+		x += '<div class = "buttons">';
+		x += '<button id="hidediv">Hide tables</button>'
+		x += '<button id="showdiv">Show tables</button>';
+		x += '</div>'
 
 		 
- // testing
+ // testing - failed??
  $("#hidediv").click(function()
  {
 	 alert("Am I being clicked?");
  });
 
+ x += '</div';
 
 	 $.each(json.coopTable.coopInformation,function(i, item)
 	{
@@ -488,13 +497,23 @@ myXHR('get',{'path':'/footer/'}).done(function(json){
 	$('#footer').html(x);
 });
 
+// MAP
 {
 var x = '';
-	x += '<iframe id="map-iframe" src="https://ist.rit.edu/api/map.php" width="100%" height="600px">';
+	x += '<iframe id="map-iframe" scrolling="no" src="https://ist.rit.edu/api/map.php" width="100%" height="600px">';
 	x += '<p>Your browser does not show the employment map.  You are using an old browser. Update your browser. </p>'
 	x += '</iframe>'
 	$('#map').html(x);
 }
+
+// CONTACT US
+{
+	var x = '';
+		x += '<iframe id="contact-iframe" scrolling="no" src="https://ist.rit.edu/api/contactForm.php" width="100%" height="600px">';
+		x += '<p>Your browser does not show the employment map.  You are using an old browser. Update your browser. </p>'
+		x += '</iframe>'
+		$('#contactus').html(x);
+	}
 
 
 		// ------------------------------------------------------------
