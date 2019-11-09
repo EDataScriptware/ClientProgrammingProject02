@@ -487,15 +487,15 @@ myXHR('get',{'path':'/footer/'}).done(function(json){
 
 	$('#footer').html(x);
 });
-/*
+
 {
 var x = '';
-	x += '<iframe id="map-iframe" src="http://ist.rit.edu/api/map/" width="100%" height="600px">';
+	x += '<iframe id="map-iframe" src="https://ist.rit.edu/api/map.php" width="100%" height="600px">';
 	x += '<p>Your browser does not show the employment map.  You are using an old browser. Update your browser. </p>'
 	x += '</iframe>'
 	$('#map').html(x);
 }
-*/
+
 
 		// ------------------------------------------------------------
 
