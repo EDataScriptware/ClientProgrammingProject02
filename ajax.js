@@ -310,7 +310,7 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 			var x = '';
 			// console.log("resource ->")
 			// console.log(json);
-			x += '<div class="resourceBlock>';
+			x += '<div class="resourceBlock">';
 			x += '<h3>'+json.title+'</h3>';
 			x += '<h4>'+json.subTitle+'</h4>';
 
@@ -324,7 +324,6 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 				// console.log(jtem);
 				x += '<h5>' + item.nameOfPlace + '</h5>';
 				x += '<h6>' + item.description + '</h6>';
-
 			}); //end places
 			x += '</div>';
 
@@ -351,21 +350,21 @@ myXHR('get',{'path':'/resources/'}).done(function(json){
 			}); //end profesonalAdvisors
 			x += '</div>';
 
-
-			x+= "<h2>" + json.studentServices.facultyAdvisors.title + "</h2>";
-			x+= "<h4>" + json.studentServices.facultyAdvisors.description + "</h4>";
+			x += '<div class="studentServicesFacultyAdvisors">'
+			x+= "<h3>" + json.studentServices.facultyAdvisors.title + "</h3>";
+			x+= "<p>" + json.studentServices.facultyAdvisors.description + "</p>";
 
 			x+= "<h3>" + json.studentServices.istMinorAdvising.title + "</h3>";
 			$.each(json.studentServices.istMinorAdvising.minorAdvisorInformation,function(j, item)
 			{
-				 //console.log(item);
-				x += '<h5>' + item.title + '</h5>';
-				x += '<h6>' + item.advisor + '</h6>';
-				x += '<h6>' + item.email + '</h6>';
-
+				x += '<div class="studentServicesIndividualFacultyAdvisors">'
+				x += '<h4>' + item.title + '</h4>';
+				x += '<p>' + item.advisor + '</p>';
+				x += '<p>' + item.email + '</p>';
+				x += '</div>'
 
 			}); //end minorAdvisorInformation
-
+			x+= '</div>'
 			x+= "<h2>" + json.tutorsAndLabInformation.title + "</h2>";
 			x+= "<h4>" + json.tutorsAndLabInformation.description + "</h4>";
 			x+= "<h6>" + json.tutorsAndLabInformation.tutoringLabHoursLink + "</h6>";
