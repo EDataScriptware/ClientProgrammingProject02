@@ -470,6 +470,12 @@ myXHR('get',{'path':'/news/'}).done(function(json){
 myXHR('get',{'path':'/footer/'}).done(function(json){
 
 	var x = '';
+
+	x += '<div id="footerWrap">'
+	x += '<iframe id="contact-iframe" scrolling="no" src="https://ist.rit.edu/api/contactForm.php" width="100%" height="600px">';
+	x += '<p>Your browser does not show the employment map.  You are using an old browser. Update your browser. </p>'
+	x += '</iframe>'
+
 	x += '<div class="footerAdvertisement">'
 
 	x += "<h2>" + json.social.title + "</h2>";
@@ -490,10 +496,14 @@ myXHR('get',{'path':'/footer/'}).done(function(json){
 	x += '</h3>'
 	x += '</div>'
 
+	x += '</div>'
+
+
 	x += '<div class= "copyright">'
 	x += "<h6>" + json.copyright.title + " " + json.copyright.html + " "  + json.news + "</h6>";
 	x += '</div>';
 
+	
 	$('#footer').html(x);
 });
 
@@ -505,15 +515,6 @@ var x = '';
 	x += '</iframe>'
 	$('#map').html(x);
 }
-
-// CONTACT US
-{
-	var x = '';
-		x += '<iframe id="contact-iframe" scrolling="no" src="https://ist.rit.edu/api/contactForm.php" width="100%" height="600px">';
-		x += '<p>Your browser does not show the employment map.  You are using an old browser. Update your browser. </p>'
-		x += '</iframe>'
-		$('#contactus').html(x);
-	}
 
 
 		// ------------------------------------------------------------
